@@ -4,11 +4,19 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
+    let numberIndex = new Map();
+    let result = [];
+    
     for (let i = 0; i < nums.length; i++) {
-        for(let j = i + 1; j < nums.length; j++) {
-            if(nums[i] + nums[j] === target) {
-                return [i , j];
-            }
+        let num = nums[i];
+        let complement = target - num;
+        if (numberIndex.has(complement)) {
+            result[0] = numberIndex.get(complement);
+            result[1] = i;
+                return result;
         }
+        numberIndex.set(num, i);
     }
+    
+    return result;
 };

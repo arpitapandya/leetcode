@@ -3,14 +3,9 @@
  * @return {boolean}
  */
 var containsDuplicate = function(nums) {
-    let numbers = new Set();
-    
-    for(let num of nums) {
-        if(!numbers.has(num)) {
-            numbers.add(num);
-        } else {
-            return true;
-        }
+    nums.sort();
+    for (let i = 0; i < nums.length - 1; i++) {
+        if(nums[i] == nums[i + 1]) return true;
     }
     return false;
 };
